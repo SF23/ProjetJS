@@ -1,5 +1,6 @@
 let array=[];
 function ajout(){
+  
   let email = document.getElementById("email").value;
   let edress = document.getElementById("adress").value;
   let adress2 = document.getElementById("adress2").value;
