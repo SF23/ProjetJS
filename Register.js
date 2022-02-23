@@ -1,4 +1,5 @@
-let array=[];
+let array= JSON.parse(localStorage.getItem("users")) || [];
+
 function ajout(){
   
   let email = document.getElementById("email").value;
