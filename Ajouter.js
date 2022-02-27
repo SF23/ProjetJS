@@ -1,4 +1,4 @@
-function add(){
+function Ajouter(){
     let x = document.getElementById("Task").value;
     let y = document.getElementById("Discription").value;
     let c=Math.floor(Math.random()* 100);
