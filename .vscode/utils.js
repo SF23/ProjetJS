@@ -23,18 +23,22 @@ function add(){
     // A faire
 
     // Recuperer le tableau
-    let x = document.getElementById("Task").value;
-    let y = document.getElementById("Discription").value;
+    let NAme = document.getElementById("Name").value;
+    let Email = document.getElementById("Email").value;
+    let Job = document.getElementById("Job").value;
+    let Employer = document.getElementById("Employer").value;
+    let Statue = document.getElementById("Statue").value;
+    let Start_date = document.getElementById("Start_date").value;
 
     // Generer un nouveau id pour le nouvel utilisateur
     let c=Math.floor(Math.random()* 100);
 
     // Creation du nouvel objet User
-    let User = {id:c,name:x,discrip:y}
+    let User = {a  : Name , b : Email , c : Job , d : Employer , e : Statue , f : Start_date}
 
     // Ajout du User dans le tableau du localStorage
     z.push(User);
-    localStorage.setItem("Tasks",JSON.stringify(z));
+    localStorage.setItem("User",JSON.stringify(z));
     // window.open('test.html', '_blank');
 
     affichage();
@@ -42,8 +46,28 @@ function add(){
 
 function showUserForm() {
     // html
+
+    
     // 1. afficher le popup ajout utilisateur
     // document.getElementById("myForm").style.display = "block";
+
+    // Validating Empty Field
+function check_empty() {
+    if (document.getElementById('name').value == "" || document.getElementById('email').value == "" || document.getElementById('msg').value == "") {
+    alert("Fill All Fields !");
+    } else {
+    document.getElementById('myForm').submit();
+    alert("Form Submitted Successfully...");
+    }
+    }
+    //Function To Display Popup
+    function div_show() {
+    document.getElementById('myForm').style.display = "block";
+    }
+    //Function to Hide Popup
+    function div_hide(){
+    document.getElementById('myForm').style.display = "none";
+    }
     
 }
 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Tasks</title>
+</head>
+<body>
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+
+
+    <div class="card" style="width: 18rem; margin: 200px auto; background-color: grey;">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name<Name/label>
+                <input type="text" class="form-control" id="name" placeholder="name Task">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="name Task">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Job</label>
+                <input type="text" class="form-control" id="job" placeholder="name Task">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Employer</label>
+                <input type="text" class="form-control" id="employer" placeholder="name Task">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Status</label>
+                <input type="text" class="form-control" id="status" placeholder="name Task">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Start_date</label>
+                <input type="text" class="form-control" id="start_date" placeholder="name Task">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"></label>
+                <textarea class="form-control" id="Discription" rows="3" placeholder="Discription"></textarea>
+            </div>
+            <div style="text-align: center;">
+                <button onclick="add()" class="btn btn-primary btn-lg">add</button>
+            </div>
+        </div>
+    
+    </div>
+    </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="Todolist.js"></script>
+</body>
+</html>
