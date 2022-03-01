@@ -2,24 +2,21 @@ let array= JSON.parse(localStorage.getItem("users")) || [];
 
 function ajout(){
   
+  let firstname = document.getElementById("firstname").value;
+  let lastname = document.getElementById("lastname").value;
   let email = document.getElementById("email").value;
-  let edress = document.getElementById("adress").value;
-  let adress2 = document.getElementById("adress2").value;
-  let city = document.getElementById("city").value;
-  let state = document.getElementById("state").value;
-  let zip = document.getElementById("zip").value;
+  let password = document.getElementById("password").value;
+  
 
   
 
 
-
-  let user={ Email:email , Password:password ,  Adress : adress ,  Adress2 : adress2 , City : city , State : state , Zip : zip }
+  // let user={ FirstName : "admin"  , LastName : "admin", Email:"admin@admin.com" , Password:"admin", Role: "admin" }
+  let user={ FirstName : firstname  , LastName : lastname , Email:email , Password:password , Role: "user"}
   // console.log(user);
   array.push(user);
   console.log(array);
   localStorage.setItem("users",JSON.stringify(array));
- let users = localStorage.getItem("users");
-  console.log(users);
-
+  window.location.replace('login.html')
 
 }
