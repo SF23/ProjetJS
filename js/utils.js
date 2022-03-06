@@ -1,21 +1,15 @@
-var p =localStorage.getItem("Tasks") || [];
-let id;
-var z = JSON.parse(p);
+var storage = localStorage.getItem("Produits") ||
+    '[{"id": 1,"name": "a","category": "category 1","description": "efldj"},{"id": 2,"name": "b","category": "category 2","description": "efd"},{"id": 3,"name": "c","category": "category 2","description": "efd"}]';
 
-const authors_table_id = "authors_table";
+var data = JSON.parse(storage);
 
 function affichage(){
-    console.log(p);
-    console.log(typeof p);
-    console.log(z);
-    console.log(typeof z);
-    let tablebody = ``;
-    let i=1;
-    p.forEach(x => {
-        tablebody += fillrow(x);
-    });
+    console.log(storage);
+    console.log(typeof storage);
+    console.log(data);
+    console.log(typeof data);
 
-    document.getElementById('authors_table').children[1].innerHTML = tablebody;
+    document.getElementById('products_table').innerHTML = buildTableHtml();
 }
 
 function add(){
@@ -23,22 +17,25 @@ function add(){
     // A faire
 
     // Recuperer le tableau
-    let NAme = document.getElementById("Name").value;
-    let Email = document.getElementById("Email").value;
-    let Job = document.getElementById("Job").value;
-    let Employer = document.getElementById("Employer").value;
-    let Statue = document.getElementById("Statue").value;
-    let Start_date = document.getElementById("Start_date").value;
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("category").value;
+    let description = document.getElementById("description").value;
 
     // Generer un nouveau id pour le nouvel utilisateur
-    let c=Math.floor(Math.random()* 100);
+    let id = Math.floor(Math.random() * 100);
 
     // Creation du nouvel objet User
-    let User = {a  : Name , b : Email , c : Job , d : Employer , e : Statue , f : Start_date}
+    let Produit = {
+        id: id,
+        name: name,
+        email: email, 
+        description: description
+    };
 
     // Ajout du User dans le tableau du localStorage
-    z.push(User);
-    localStorage.setItem("User",JSON.stringify(z));
+    data.push(Produit);
+    storage = JSON.stringify(data);
+    localStorage.setItem("Produits", storage);
     // window.open('test.html', '_blank');
 
     affichage();
@@ -71,18 +68,30 @@ function check_empty() {
     
 }
 
-function deleteitem(x){
-    console.log(x);
-    z.splice(x,1);
-    console.log(z);
-    localStorage.setItem("Tasks",JSON.stringify(z));
+function deleteitem(id){
+    data = data.filter(item => item.id !== id);
+    storage = JSON.stringify(data);
+
+    localStorage.setItem('Produits', storage);
 
     affichage();
 }
 
-function updateitem(a) {
-    // console.log(z);
-   let update= z.find(x =>x.id ==a);
+function updateitem(product) {
+    // TODO
+    // Add form in the html
+    // update the localStorage regarding the form input
+
+    let itemToUpdateIndex = data.findIndex((item) => item.id == id);
+
+    data[itemToUpdateIndex] = product;
+
+    storage = JSON();
+    let itemToUpdate = data[itemToUpdateIndex];
+
+    // itemToUpdate.name = ;
+    data[itemToUpdateIndex]
+   
    document.getElementById("Task").value=update.name
    document.getElementById("Discription").value=update.discrip;
    console.log(update);
@@ -156,37 +165,56 @@ function recherche(){
     document.getElementById("body").innerHTML= hello 
 }
 
-function fillrow(user) {
-
-    
+function fillrow(product) {    
     return     `<tr>
                     <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">${user.name}</h6>
-                        <p class="text-xs text-secondary mb-0">${user.email}</p>
-                        </div>
-                    </div>
+                        <p class="text-xs font-weight-bold mb-0">${product.name}</p>
                     </td>
                     <td>
-                    <p class="text-xs font-weight-bold mb-0">${user.job}</p>
-                    <p class="text-xs text-secondary mb-0">${user.employer}</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                    <span class="badge badge-sm bg-gradient-success">${user.status}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">${user.start_date}</span>
-                    </td>
-        
-                    <td>
-                        <button onclick="updateitem(${user.id})" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+                        <p class="text-xs font-weight-bold mb-0">${product.category}</p>
                     </td>
                     <td>
-                        <button onclick="deleteitem(${user.id})" class="btn btn-danger btn-lg">Delete</button>
+                        <p class="text-xs font-weight-bold mb-0">${product.description}</p>
                     </td>
-                </tr>`;                
+                    
+                    <td>
+                        <button class="btn bg-gradient-success w-30 mb-0 toast-btn" type="button" onclick="update(${product.id})">Update</button>
+                    <td>
+                    <button class="btn bg-gradient-success w-30 mb-0 toast-btn" type="button" onclick="deleteitem(${product.id})">Delete</button>
+                    </td>
+                </tr>`;
 }
+
+function getTableHeader() {
+    return `<thead>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
+                    <th class="text-secondary opacity-7"></th>
+                </tr>
+            </thead>`;
+}
+
+function buildTableHtml() {
+    // Add header <thead>
+    let html = getTableHeader();
+
+    // Open tbody
+    html += '<tbody>'
+    
+    // for each product : Add product row
+    data.forEach(product => {
+        html += fillrow(product);
+    });
+
+    // Close tbody
+    html += '</tbody>'
+
+    return html;
+}
+
+(function () {
+    affichage();
+})();
