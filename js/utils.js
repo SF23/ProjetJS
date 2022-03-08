@@ -1,7 +1,7 @@
-var storage = localStorage.getItem("Produits") ||
-    '[{"id": 1,"name": "a","category": "category 1","description": "efldj"},{"id": 2,"name": "b","category": "category 2","description": "efd"},{"id": 3,"name": "c","category": "category 2","description": "efd"}]';
+var storage = localStorage.getItem("Produits") || [];
 
 var data = JSON.parse(storage);
+// var z=JSON.parse(p);
 
 function affichage(){
     console.log(storage);
@@ -9,7 +9,58 @@ function affichage(){
     console.log(data);
     console.log(typeof data);
 
-    document.getElementById('products_table').innerHTML = buildTableHtml();
+
+
+        let hello=``;
+        let i=1;
+    data.forEach(x => {
+        hello += `<tr>
+        <th scope="row">${i}</th>
+        <td>${x.name }</td>
+        <td>${x.cathegorie}</td>
+        <td>${x.description}</td>
+        <td><button onclick="updateitem(${x.id})" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button></td>
+        <td><button onclick="deleteitem(${i-1})" class="btn btn-danger btn-lg">Delete</button></td>
+        </tr>
+           
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card" style="width: 18rem; margin: 100px auto; background-color: grey;">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Nom Produit</label>
+                            <input type="text" class="form-control" id="companyname">
+                        </div>
+                        <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"> Cathegorie Produit</label>
+                        <input type="text" class="form-control" id="adress">
+                    </div>
+                    <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="email">
+                </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="save(${x.id})">Save changes</button>
+            </div>
+          </div>
+        </div>
+    </div>`
+
+        i++;
+    });
+    // document.getElementById("body").innerHTML= hello  
+
+    // document.getElementById('products_table').innerHTML = buildTableHtml();
 }
 
 function add(){
@@ -18,8 +69,8 @@ function add(){
 
     // Recuperer le tableau
     let name = document.getElementById("name").value;
-    let email = document.getElementById("category").value;
-    let description = document.getElementById("description").value;
+    let cathegory = document.getElementById("category").value;
+    let description = document.getElementById("discription").value;
 
     // Generer un nouveau id pour le nouvel utilisateur
     let id = Math.floor(Math.random() * 100);
@@ -27,8 +78,8 @@ function add(){
     // Creation du nouvel objet User
     let Produit = {
         id: id,
-        name: name,
-        email: email, 
+        name : name ,
+        cathegory: cathegory, 
         description: description
     };
 
@@ -36,9 +87,7 @@ function add(){
     data.push(Produit);
     storage = JSON.stringify(data);
     localStorage.setItem("Produits", storage);
-    // window.open('test.html', '_blank');
 
-    affichage();
 }
 
 function showUserForm() {
@@ -92,8 +141,9 @@ function updateitem(product) {
     // itemToUpdate.name = ;
     data[itemToUpdateIndex]
    
-   document.getElementById("Task").value=update.name
-   document.getElementById("Discription").value=update.discrip;
+   document.getElementById("name").value=update.name
+   document.getElementById("cathegory").value=update.cathegory;
+   document.getElementById("discription").value=update.discription;
    console.log(update);
    id=a;
 
