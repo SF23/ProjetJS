@@ -3,73 +3,93 @@ var storage = localStorage.getItem("Produits") || [];
 var data = JSON.parse(storage);
 // var z=JSON.parse(p);
 
-function affichage(){
-    console.log(storage);
-    console.log(typeof storage);
-    console.log(data);
-    console.log(typeof data);
+// //function affichage(){
+ 
 
 
 
-        let hello=``;
-        let i=1;
-    data.forEach(x => {
-        hello += `<tr>
-        <th scope="row">${i}</th>
-        <td>${x.name }</td>
-        <td>${x.cathegorie}</td>
-        <td>${x.description}</td>
-        <td><button onclick="updateitem(${x.id})" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button></td>
-        <td><button onclick="deleteitem(${i-1})" class="btn btn-danger btn-lg">Delete</button></td>
-        </tr>
-           
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="card" style="width: 18rem; margin: 100px auto; background-color: grey;">
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nom Produit</label>
-                            <input type="text" class="form-control" id="companyname">
-                        </div>
-                        <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"> Cathegorie Produit</label>
-                        <input type="text" class="form-control" id="adress">
-                    </div>
-                    <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Description</label>
-                    <input type="text" class="form-control" id="email">
-                </div>
-                       
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="save(${x.id})">Save changes</button>
-            </div>
-          </div>
-        </div>
-    </div>`
+//         let hello=``;
+//         let i=1;
+//     storage.forEach(x => {
+//         hello += 
+//       `<div class="card" style="width: 18rem;">
+//        <img src="..." class="card-img-top" alt="...">
+//        <div class="card-body">
+//        <h5 class="card-title">${x.name }</h5>
+//        <p class="card-text">${x.cathegorie}</p>
+//        <p class="card-text">${x.description}}</p>
+//        <button type="button" class="btn btn-primary" onclick="save(${x.id})">Save</button>
+//        </div>
+//        </div>`
 
-        i++;
-    });
+//         i++;
+//     });
     // document.getElementById("body").innerHTML= hello  
 
     // document.getElementById('products_table').innerHTML = buildTableHtml();
-}
+//}
 
-function add(){
+
+
+// function affichage2(){
+//     let hello=``;
+//     let i=1;
+// z.forEach(x => {
+//     hello += `<tr>
+//     <th scope="row">${i}</th>
+//     <td>${x.CompanyName}</td>
+//     <td>${x.Adress}</td>
+//     <td>${x.Email}</td>
+//     <td><button onclick="updateitem(${x.id})" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button></td>
+//     <td><button onclick="deleteitem(${i-1})" class="btn btn-danger btn-lg">Delete</button></td>
+//     </tr>
+       
+//     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//     <div class="modal-dialog">
+//       <div class="modal-content">
+//         <div class="modal-header">
+//           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//         </div>
+//         <div class="modal-body">
+//             <div class="card" style="width: 18rem; margin: 100px auto; background-color: grey;">
+//                 <div class="card-body">
+//                     <div class="mb-3">
+//                         <label for="exampleFormControlInput1" class="form-label">CopanyName</label>
+//                         <input type="text" class="form-control" id="companyname">
+//                     </div>
+//                     <div class="mb-3">
+//                     <label for="exampleFormControlInput1" class="form-label">Adress</label>
+//                     <input type="text" class="form-control" id="adress">
+//                 </div>
+//                 <div class="mb-3">
+//                 <label for="exampleFormControlInput1" class="form-label">E mail</label>
+//                 <input type="text" class="form-control" id="email">
+//             </div>
+                   
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="modal-footer">
+//           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+//           <button type="button" class="btn btn-primary" onclick="save(${x.id})">Save changes</button>
+//         </div>
+//       </div>
+//     </div>
+// </div>`
+
+//     i++;
+// });
+// document.getElementById("body").innerHTML= hello    
+// }
+
+
+function Add(){
     // Recuperer les valeurs name, email, etc. depuis la form
     // A faire
 
     // Recuperer le tableau
     let name = document.getElementById("name").value;
-    let cathegory = document.getElementById("category").value;
+    let cathegory = document.getElementById("cathegory").value;
     let description = document.getElementById("discription").value;
 
     // Generer un nouveau id pour le nouvel utilisateur
@@ -265,6 +285,4 @@ function buildTableHtml() {
     return html;
 }
 
-(function () {
-    affichage();
-})();
+

@@ -36,7 +36,7 @@
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
+<body class="g-sidenav-show  bg-gray-200" load="AjouterDashbord()" >
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -260,6 +260,16 @@
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-0">
                 <table id="products_table" class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cathegorie</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="tableBody">
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -1036,10 +1046,11 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.0"></script>
-  <script src="Modifier.js"></script>
-  <script src="Supprimer.js"></script>
+  <!-- <script src="Modifier.js"></script> -->
+  <!-- <script src="Supprimer.js"></script> -->
   <!-- <script src="Ajouter.js"></script> -->
-  <script src="/js/utils.js"></script>
+  <!-- <script src="/js/utils.js"></script> -->
+  <script src="../js/AjouterDashbord.js"></script>
 </body>
 
 </html>
