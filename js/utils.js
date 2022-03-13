@@ -1,13 +1,14 @@
 var storage = localStorage.getItem("Produits") || [];
 
 var data = JSON.parse(storage);
-// var z=JSON.parse(p);
+
+
 
 // //function affichage(){
  
 
 
-
+/*
 //         let hello=``;
 //         let i=1;
 //     storage.forEach(x => {
@@ -81,34 +82,8 @@ var data = JSON.parse(storage);
 // });
 // document.getElementById("body").innerHTML= hello    
 // }
+ */
 
-
-function Add(){
-    // Recuperer les valeurs name, email, etc. depuis la form
-    // A faire
-
-    // Recuperer le tableau
-    let name = document.getElementById("name").value;
-    let cathegory = document.getElementById("cathegory").value;
-    let description = document.getElementById("discription").value;
-
-    // Generer un nouveau id pour le nouvel utilisateur
-    let id = Math.floor(Math.random() * 100);
-
-    // Creation du nouvel objet User
-    let Produit = {
-        id: id,
-        name : name ,
-        cathegory: cathegory, 
-        description: description
-    };
-
-    // Ajout du User dans le tableau du localStorage
-    data.push(Produit);
-    storage = JSON.stringify(data);
-    localStorage.setItem("Produits", storage);
-
-}
 
 function showUserForm() {
     // html

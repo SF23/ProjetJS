@@ -263,7 +263,7 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cathegorie</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Categorie</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
@@ -276,8 +276,36 @@
           </div>
         </div>
       </div>
-      <button class="btn bg-gradient-info w-30 mb-0 toast-btn" type="button" data-target="infoToast" onclick="add()">Ajouter</button>
+      <button class="btn bg-gradient-info w-30 mb-0 toast-btn" type="button" data-target="infoToast" onclick="OpenForm()">Ajouter</button>
 
+
+      <!-- Add form -->
+
+      <div class="form-popup" id="myForm">
+        <form class="form-container">
+            <div class="card" style="width: 18rem; margin: 200px auto; background-color: pink;">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nom du produit </label>
+                                <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Categorie du Produit</label>
+                        <input type="text" class="form-control" id="category">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" rows="3"></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button onclick="Add()" class="btn btn-primary btn-lg">Ajouter</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
      
 
 
@@ -1050,7 +1078,11 @@
   <!-- <script src="Supprimer.js"></script> -->
   <!-- <script src="Ajouter.js"></script> -->
   <!-- <script src="/js/utils.js"></script> -->
-  <script src="../js/AjouterDashbord.js"></script>
+  <script src="../js/AfficherDashboard.js"></script>
+  <script src="../js/ModifDashbord.js"></script>
+  <script src="../js/SupprimerProduit.js"></script>
+  <script src="../js/AjouterProduit.js"></script>
+  <script src="../js/utils.js"></script>
 </body>
 
 </html>

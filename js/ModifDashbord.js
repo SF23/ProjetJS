@@ -1,30 +1,37 @@
-
 var storage = localStorage.getItem("Produits") || [];
 
 var data = JSON.parse(storage);
 
 
-
-function ModifDashbord(product) {
+function ModifierDashboard(button) {
     // TODO
     // Add form in the html
     // update the localStorage regarding the form input
+    //const productsTable = document.getElementById('products_table');
+    const row = button.parentNode.parentNode;
+    const productId = row.getAttribute('id');
+    console.log('productId = ' + productId);
 
-    let itemToUpdateIndex = data.findIndex((item) => item.id == id);
+    const productToUpdateIndex = data.findIndex((item) => item.id == productId);
 
-    data[itemToUpdateIndex] = product;
+    if (productToUpdateIndex < 0) {
+        return;
+    }
 
-    storage = JSON();
-    let itemToUpdate = data[itemToUpdateIndex];
+    const productName = row.firstElementChild.childNodes[1].childNodes[1].childNodes[1].innerHTML;
+    const productCategory = row.childNodes[3].childNodes[1].innerHTML;
+    const productDescription = row.childNodes[5].childNodes[1].innerHTML;
+    
+    const product = {
+        id: productId,
+        name: productName,
+        category: productCategory,
+        description: productDescription
+    };
 
-    // itemToUpdate.name = ;
-    data[itemToUpdateIndex]
-   
-   document.getElementById("name").value=update.name
-   document.getElementById("cathegory").value=update.cathegory;
-   document.getElementById("discription").value=update.discription;
-   console.log(update);
-   id=a;
+    data[productToUpdateIndex] = product;
 
-   affichage2();
+    localStorage.setItem('Produits', JSON.stringify(data));
+
+    AfficherDashboard();
 }
